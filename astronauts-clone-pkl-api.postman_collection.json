@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-astro-pkl-collection",
+    "name": "Astronauts Clone PKL API",
+    "description": "Collection buat tes API project PKL. Endpoint yang masih TODO akan return text petunjuk — itu tugas kalian (lihat PLAN.md).\n\nSetup: buat Environment dengan variable base_url = http://127.0.0.1:8000 (sesuaikan kalau pakai port lain).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Ping (cek API hidup)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/ping"
+      }
+    },
+    {
+      "name": "TODO: List Produk",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/products"
+      }
+    },
+    {
+      "name": "TODO: List Produk — filter kategori",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/products?category=buah-segar"
+      }
+    },
+    {
+      "name": "TODO: List Produk — filter populer",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/products?popular=1"
+      }
+    },
+    {
+      "name": "TODO: List Produk — cari",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/products?search=pisang"
+      }
+    },
+    {
+      "name": "Kategori: List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/categories"
+      }
+    },
+    {
+      "name": "Kategori: Buat (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"slug\": \"minuman-dingin\",\n  \"name\": \"Minuman Dingin\",\n  \"description\": \"Contoh kategori baru dari Postman\",\n  \"icon\": \"https://picsum.photos/seed/minuman-dingin/200/200\"\n}"
+        },
+        "url": "{{base_url}}/api/categories"
+      }
+    },
+    {
+      "name": "Kategori: Detail {id}",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/categories/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "categories",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kategori: Ubah (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Minuman Dingin & Segar\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/categories/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "categories",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kategori: Hapus (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/categories/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "categories",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "TODO: Detail Produk {slug}",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/products/:slug",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            ":slug"
+          ],
+          "variable": [
+            {
+              "key": "slug",
+              "value": "pisang-cavendish"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Kategori: List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/categories"
+      }
+    },
+    {
+      "name": "TODO: Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"demo@demo.com\",\n  \"password\": \"password\"\n}"
+        },
+        "url": "{{base_url}}/api/auth/login"
+      }
+    },
+    {
+      "name": "TODO: Profil Saya (butuh token)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/me"
+      }
+    },
+    {
+      "name": "TODO: Buat Order (butuh token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"items\": [\n    { \"id\": 1, \"qty\": 2 }\n  ],\n  \"address\": \"Jl. Merdeka No. 1, Jakarta\",\n  \"paymentMethod\": \"saldo_astro\",\n  \"subtotal\": 57800,\n  \"shippingFee\": 0,\n  \"totalPrice\": 57800\n}"
+        },
+        "url": "{{base_url}}/api/orders"
+      }
+    },
+    {
+      "name": "TODO: Order Saya (butuh token)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": "{{base_url}}/api/orders"
+      }
+    }
+  ]
+}
